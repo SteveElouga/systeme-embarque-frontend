@@ -1,0 +1,152 @@
+<section class="spinner-section" *ngIf="loading; else content">
+  <mat-spinner></mat-spinner>
+</section>
+<ng-template #content>
+  <section>
+    <h3 style="margin: 20px">Que voulez-vous faire ? </h3>
+    <div @list class="sect">
+      <div @listItem class="example-ripple-container mat-elevation-z4"
+           matRipple
+           [matRippleCentered]="centered"
+           [matRippleDisabled]="disabled"
+           [matRippleUnbounded]="unbounded"
+           [matRippleRadius]="radius"
+           [matRippleColor]="color"
+            (click)="images()"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+             stroke="#005CBB"
+             stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+             class="icon icon-tabler icons-tabler-outline icon-tabler-layout-collage">
+          <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+          <path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z"/>
+          <path d="M10 4l4 16"/>
+          <path d="M12 12l-8 2"/>
+        </svg>
+          Images
+      </div>
+      <div @listItem class="example-ripple-container mat-elevation-z4"
+           matRipple
+           [matRippleCentered]="centered"
+           [matRippleDisabled]="disabled"
+           [matRippleUnbounded]="unbounded"
+           [matRippleRadius]="radius"
+           [matRippleColor]="color"
+           (click)="videos()"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor"
+             stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+             class="icon icon-tabler icons-tabler-outline icon-tabler-video">
+          <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+          <path d="M15 10l4.553 -2.276a1 1 0 0 1 1.447 .894v6.764a1 1 0 0 1 -1.447 .894l-4.553 -2.276v-4z"/>
+          <path d="M3 6m0 2a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v8a2 2 0 0 1 -2 2h-8a2 2 0 0 1 -2 -2z"/>
+        </svg>
+        Videos
+      </div>
+      <div @listItem class="example-ripple-container mat-elevation-z4"
+           matRipple
+           [matRippleCentered]="centered"
+           [matRippleDisabled]="disabled"
+           [matRippleUnbounded]="unbounded"
+           [matRippleRadius]="radius"
+           [matRippleColor]="color"
+           (click)="pdf()"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor"
+             stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+             class="icon icon-tabler icons-tabler-outline icon-tabler-pdf">
+          <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+          <path d="M10 8v8h2a2 2 0 0 0 2 -2v-4a2 2 0 0 0 -2 -2h-2z"/>
+          <path d="M3 12h2a2 2 0 1 0 0 -4h-2v8"/>
+          <path d="M17 12h3"/>
+          <path d="M21 8h-4v8"/>
+        </svg>
+        Pdf
+      </div>
+      <div @listItem class="example-ripple-container mat-elevation-z4"
+           matRipple
+           [matRippleCentered]="centered"
+           [matRippleDisabled]="disabled"
+           [matRippleUnbounded]="unbounded"
+           [matRippleRadius]="radius"
+           [matRippleColor]="color"
+           (click)="textes()"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor"
+             stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+             class="icon icon-tabler icons-tabler-outline icon-tabler-align-center">
+          <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+          <path d="M4 6l16 0"/>
+          <path d="M8 12l8 0"/>
+          <path d="M6 18l12 0"/>
+        </svg>
+        Textes
+      </div>
+      <div @listItem class="example-ripple-container mat-elevation-z4"
+           matRipple
+           [matRippleCentered]="centered"
+           [matRippleDisabled]="disabled"
+           [matRippleUnbounded]="unbounded"
+           [matRippleRadius]="radius"
+           [matRippleColor]="color"
+           (click)="audios()"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor"
+             stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+             class="icon icon-tabler icons-tabler-outline icon-tabler-headphones">
+          <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+          <path d="M4 13m0 2a2 2 0 0 1 2 -2h1a2 2 0 0 1 2 2v3a2 2 0 0 1 -2 2h-1a2 2 0 0 1 -2 -2z"/>
+          <path d="M15 13m0 2a2 2 0 0 1 2 -2h1a2 2 0 0 1 2 2v3a2 2 0 0 1 -2 2h-1a2 2 0 0 1 -2 -2z"/>
+          <path d="M4 15v-3a8 8 0 0 1 16 0v3"/>
+        </svg>
+        Audios
+      </div>
+      <div @listItem class="example-ripple-container mat-elevation-z4"
+           matRipple
+           [matRippleCentered]="centered"
+           [matRippleDisabled]="disabled"
+           [matRippleUnbounded]="unbounded"
+           [matRippleRadius]="radius"
+           [matRippleColor]="color"
+           (click)="autres()"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"
+             class="icon icon-tabler icons-tabler-filled icon-tabler-clover">
+          <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+          <path
+            d="M12.712 13.297l3.398 3.442a3.104 3.104 0 0 1 0 4.351a3.04 3.04 0 0 1 -4.036 .27l-.075 -.062l-.073 .062a3.04 3.04 0 0 1 -1.664 .634l-.203 .007a3.04 3.04 0 0 1 -2.17 -.91a3.104 3.104 0 0 1 .002 -4.354l3.397 -3.44a1 1 0 0 1 1.424 0m8.378 -5.407a3.04 3.04 0 0 1 .27 4.037l-.062 .073l.062 .075a3.04 3.04 0 0 1 .634 1.664l.007 .203a3.04 3.04 0 0 1 -.91 2.17a3.104 3.104 0 0 1 -4.354 -.002l-3.44 -3.397a1 1 0 0 1 0 -1.424l3.443 -3.399a3.104 3.104 0 0 1 4.351 0m-13.827 .002l3.44 3.397a1 1 0 0 1 0 1.424l-3.444 3.397a3.104 3.104 0 0 1 -4.351 0a3.04 3.04 0 0 1 -.27 -4.036l.062 -.075l-.062 -.073a3.04 3.04 0 0 1 -.634 -1.664l-.007 -.203c0 -.816 .328 -1.598 .91 -2.17a3.104 3.104 0 0 1 4.354 .002m6.678 -5.891a3.04 3.04 0 0 1 2.17 .91a3.104 3.104 0 0 1 -.002 4.354l-3.397 3.44a1 1 0 0 1 -1.424 0l-3.397 -3.444a3.104 3.104 0 0 1 0 -4.351a3.04 3.04 0 0 1 4.036 -.27l.073 .062l.075 -.062a3.04 3.04 0 0 1 1.664 -.634z"/>
+        </svg>
+        Autres
+      </div>
+      <div @listItem class="example-ripple-container mat-elevation-z4"
+           matRipple
+           [matRippleCentered]="centered"
+           [matRippleDisabled]="disabled"
+           [matRippleUnbounded]="unbounded"
+           [matRippleRadius]="radius"
+           [matRippleColor]="color"
+           (click)="corbeille()"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"
+             class="icon icon-tabler icons-tabler-filled icon-tabler-archive">
+          <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+          <path d="M2 3m0 2a2 2 0 0 1 2 -2h16a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-16a2 2 0 0 1 -2 -2z"/>
+          <path
+            d="M19 9c.513 0 .936 .463 .993 1.06l.007 .14v7.2c0 1.917 -1.249 3.484 -2.824 3.594l-.176 .006h-10c-1.598 0 -2.904 -1.499 -2.995 -3.388l-.005 -.212v-7.2c0 -.663 .448 -1.2 1 -1.2h14zm-5 2h-4l-.117 .007a1 1 0 0 0 0 1.986l.117 .007h4l.117 -.007a1 1 0 0 0 0 -1.986l-.117 -.007z"/>
+        </svg>
+        Corbeille
+      </div>
+    </div>
+  </section>
+</ng-template>
+
+
+
+
+
+
+

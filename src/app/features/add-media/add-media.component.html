@@ -1,0 +1,29 @@
+<section>
+  <h3>Creez votre nouveau medias : </h3>
+  <div class="form">
+    <input class="file" type="file" (change)="onFileSelected($event)"/>
+    <div [formGroup]="mediaInfosGroup" class="formDetail">
+      <mat-form-field>
+        <mat-label>Titre</mat-label>
+        <input [formControl]="mediaTitleControl" matInput>
+        <mat-error>{{getFormErrors(mediaTitleControl)}}</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Description</mat-label>
+        <input [formControl]="mediaDescriptionControl" matInput>
+        <mat-error>{{getFormErrors(mediaDescriptionControl)}}</mat-error>
+      </mat-form-field>
+
+      <div>
+        <button mat-raised-button
+                [disabled]="mediaInfosGroup.invalid" (click)="createMedia()">Creer
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div *ngIf="loading$ | async" style="width: 100%; height: 100%;display: flex; justify-content: center; align-items:
+center; position: fixed; left: 0; top: 0; background: rgba(0,0,0,0.29); z-index: 1000">
+  <mat-progress-bar style="width: 400px" mode="indeterminate"></mat-progress-bar>
+</div>

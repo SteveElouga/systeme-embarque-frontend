@@ -1,0 +1,39 @@
+.example-card {
+  max-width: 350px;
+}
+
+.example-header-image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+}
+.plus{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+
+  button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    svg{
+      display: block;
+    }
+  }
+}
+
+.mat-icon {
+  display: block;
+}
+.modify{
+  &:hover{
+    background-color: rgba(80, 227, 194, 0.2);
+  }
+}
+
+.delete{
+  &:hover{
+    background-color: rgba(249, 62, 62, 0.18);
+  }
+}

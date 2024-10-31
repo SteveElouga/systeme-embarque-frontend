@@ -1,0 +1,76 @@
+<section class="spinner-section" *ngIf="loading$ | async; else content">
+  <mat-spinner></mat-spinner>
+</section>
+<ng-template #content>
+  <section @list *ngIf="images$ | async as images">
+    <div class="menu" style="width: 20px; left:0; top: 5000px">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+           stroke="#005CBB"
+           stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+           class="icon icon-tabler icons-tabler-outline icon-tabler-layout-collage">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+        <path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z"/>
+        <path d="M10 4l4 16"/>
+        <path d="M12 12l-8 2"/>
+      </svg>
+
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+           stroke="currentColor"
+           stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+           class="icon icon-tabler icons-tabler-outline icon-tabler-video">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+        <path d="M15 10l4.553 -2.276a1 1 0 0 1 1.447 .894v6.764a1 1 0 0 1 -1.447 .894l-4.553 -2.276v-4z"/>
+        <path d="M3 6m0 2a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v8a2 2 0 0 1 -2 2h-8a2 2 0 0 1 -2 -2z"/>
+      </svg>
+
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+           stroke="currentColor"
+           stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+           class="icon icon-tabler icons-tabler-outline icon-tabler-pdf">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+        <path d="M10 8v8h2a2 2 0 0 0 2 -2v-4a2 2 0 0 0 -2 -2h-2z"/>
+        <path d="M3 12h2a2 2 0 1 0 0 -4h-2v8"/>
+        <path d="M17 12h3"/>
+        <path d="M21 8h-4v8"/>
+      </svg>
+
+      <a
+        matTooltip="A propos de 'app"
+        [style.color]="'white'"
+        routerLink="about-app"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{exact : true}"
+        class="link"
+        style="position: absolute; right: 50px"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+             class="icon icon-tabler icons-tabler-outline icon-tabler-info-circle">
+          <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+          <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0"/>
+          <path d="M12 9h.01"/>
+          <path d="M11 12h1v4h1"/>
+        </svg>
+      </a>
+    </div>
+
+    <h3>Liste des images : </h3>
+    <mat-list @listItem role="list" *ngFor="let image of images | paginate: {itemsPerPage :10, currentPage:page}"
+               style="margin: 0 auto;">
+      <mat-list-item (click)="onView(image.id)" style="display: flex; justify-content: center; align-items: center;
+      cursor: pointer">
+        <mat-icon matListItemAvatar>
+          <img [src]="image.media_url" style="object-fit: cover; width: 100%; height: 100%">
+        </mat-icon>
+        <div matListItemTitle>{{image.name}}</div>
+        <div matListItemLine>{{image.created_at}}</div>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+    </mat-list>
+
+    <div class="pagination-controls" *ngIf="images.length > 10">
+      <pagination-controls  previousLabel="Retour" nextLabel="Suivant"
+                           (pageChange)="page=$event"></pagination-controls>
+    </div>
+  </section>
+</ng-template>

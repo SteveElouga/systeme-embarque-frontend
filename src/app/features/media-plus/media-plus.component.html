@@ -1,0 +1,110 @@
+<section style="display: flex; flex-direction: row-reverse;justify-content: center; align-items: center; column-gap:
+20px" [ngStyle]="{'flex-direction': isMallScreen ? 'column': 'row-reverse'}" *ngIf="media$ | async as m">
+  <div class="plus" [ngStyle]="{'flex-direction': isMallScreen ? 'row': 'column'}" @list>
+    <button @listItem mat-raised-button style="margin-bottom: 20px" (click)="back(m.status)">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+           stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+           class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-back-up">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+        <path d="M9 14l-4 -4l4 -4"/>
+        <path d="M5 10h11a4 4 0 1 1 0 8h-1"/>
+      </svg>
+    </button>
+    <button *ngIf="m.status=='pending'" @listItem class="modify" mat-raised-button style="margin-bottom: 20px"
+            (click)="restaure(m.id)">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#50E3C2"
+           stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+           class="icon icon-tabler icons-tabler-outline icon-tabler-restore">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+        <path d="M3.06 13a9 9 0 1 0 .49 -4.087"/>
+        <path d="M3 4.001v5h5"/>
+        <path d="M12 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"/>
+      </svg>
+    </button>
+    <button *ngIf="m.status=='pending'; else movee" @listItem class="delete" mat-raised-button style="margin-bottom:
+    20px"
+            (click)="delete(m.id, m.type)">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F93E3E"
+           stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+           class="icon icon-tabler icons-tabler-outline icon-tabler-trash-x">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+        <path d="M4 7h16"/>
+        <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12"/>
+        <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3"/>
+        <path d="M10 12l4 4m0 -4l-4 4"/>
+      </svg>
+    </button>
+
+    <ng-template #movee>
+      <button @listItem class="delete" mat-raised-button style="margin-bottom:
+    20px"
+              (click)="move(m.id, m.type)">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F93E3E"
+             stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+             class="icon icon-tabler icons-tabler-outline icon-tabler-trash-x">
+          <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+          <path d="M4 7h16"/>
+          <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12"/>
+          <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3"/>
+          <path d="M10 12l4 4m0 -4l-4 4"/>
+        </svg>
+      </button>
+    </ng-template>
+  </div>
+  <mat-card class="example-card" appearance="outlined" style="box-sizing: border-box">
+    <mat-card-header>
+      <mat-card-title>{{m.titre}}</mat-card-title>
+      <mat-card-subtitle>{{m.created_at}}</mat-card-subtitle>
+    </mat-card-header>
+    <div [ngSwitch]="type">
+      <a target="_blank"
+         rel="noopener noreferrer" [href]="m.media_url">
+        <img *ngSwitchCase="'image'" style="object-fit: cover; padding: 5px; border-radius: 10px;
+      margin:10px 0;max-height:400px;width:350px" mat-card-image
+             [src]="m.media_url"
+             [alt]="m.name">
+      </a>
+
+
+      <video style="box-sizing: border-box; padding: 5px; border-radius: 10px;
+      margin:10px 0; max-height:400px; max-width: 100%" *ngSwitchCase="'video'" controls
+             poster="https://images.pexels.com/photos/1767434/pexels-photo-1767434.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1">
+        <source [src]="m.media_url" type="video/mp4">
+      </video>
+
+      <div *ngSwitchCase="'audio'">
+        <audio controls style="margin: 20px 10px">
+          <source [src]="m.media_url" type="audio/mp3">
+        </audio>
+      </div>
+      <div *ngSwitchCase="'pdf'">
+        <a style="margin: 20px 20px; display: block; color: black" [href]="m.media_url" target="_blank"
+           rel="noopener noreferrer">
+          Ouvrir le pdf</a>
+      </div>
+      <div *ngSwitchCase="'text'">
+        <a style="margin: 20px 20px; display: block; color: black" [href]="m.media_url" target="_blank"
+           rel="noopener noreferrer">
+          Ouvrir le fichier texte</a>
+      </div>
+      <div *ngSwitchCase="'else'">
+        <a style="margin: 20px 20px; display: block; color: black" [href]="m.media_url" target="_blank"
+           rel="noopener noreferrer">
+          Ouvrir le fichier</a>
+      </div>
+
+    </div>
+    <mat-card-content>
+      <p>
+        {{m.description}}
+      </p>
+    </mat-card-content>
+  </mat-card>
+
+</section>
+
+<div *ngIf="loading$ | async" style="width: 100%; height: 100%;display: flex; justify-content: center; align-items:
+center; position: fixed; left: 0; top: 0; background: rgba(0,0,0,0.29); z-index: 1000">
+  <mat-spinner></mat-spinner>
+</div>
+

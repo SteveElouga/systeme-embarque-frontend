@@ -1,0 +1,24 @@
+<section class="spinner-section" *ngIf="loading$ | async; else content">
+  <mat-spinner></mat-spinner>
+</section>
+<ng-template #content>
+  <section @list *ngIf="medias$ | async as medias">
+    <h3>Liste des fichiers non categorises : </h3>
+    <mat-list @listItem role="list" *ngFor="let media of medias | paginate: {itemsPerPage :10, currentPage:page}"
+               style="margin: 0 auto;">
+      <mat-list-item style="display: flex; justify-content: center; align-items: center; cursor: pointer"
+                     (click)="onView(media.id)">
+        <mat-icon matListItemIcon style="margin-right: 20px">
+          description
+        </mat-icon>
+        <div matListItemTitle>{{media.name}}</div>
+        <div matListItemLine>{{media.created_at}}</div>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+    </mat-list>
+    <div class="pagination-controls" *ngIf="medias.length > 10">
+      <pagination-controls  previousLabel="Retour" nextLabel="Suivant"
+                            (pageChange)="page=$event"></pagination-controls>
+    </div>
+  </section>
+</ng-template>

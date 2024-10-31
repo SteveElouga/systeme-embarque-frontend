@@ -1,0 +1,23 @@
+<section class="spinner-section" *ngIf="loading; else content">
+  <mat-spinner></mat-spinner>
+</section>
+<ng-template #content>
+  <section *ngIf="functionnalities.length" @list>
+    <h3 style="margin: 20px;">Fonctionnalites phares de l'application : </h3>
+    <div class="function" *ngFor="let function of functionnalities; let i=index" class="example-ripple-container"
+         (mouseenter)="onListItemMouseEnter(i)" (mouseleave)="onListItemMouseLeave(i)"
+         [style.background-color]="function.color"
+         [@listItem]="animationsStates[i]"
+         matRipple
+         [matRippleCentered]="centered"
+         [matRippleDisabled]="disabled"
+         [matRippleUnbounded]="unbounded"
+         [matRippleRadius]="radius"
+         [matRippleColor]="color">
+      <div class="corbeille">
+        <h5>{{function.h5}}</h5>
+        <p>{{function.p}}</p>
+      </div>
+    </div>
+  </section>
+</ng-template>

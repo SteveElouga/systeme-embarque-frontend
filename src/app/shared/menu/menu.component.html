@@ -1,0 +1,108 @@
+<aside class="menu" @listItem>
+  <a
+    matTooltip="Images"
+    matTooltipPosition="above"
+    [style.color]="'white'"
+    routerLink="/images"
+    routerLinkActive="active"
+    [routerLinkActiveOptions]="{exact : true}"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+         stroke="#005CBB"
+         stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+         class="icon icon-tabler icons-tabler-outline icon-tabler-layout-collage">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z"/>
+      <path d="M10 4l4 16"/>
+      <path d="M12 12l-8 2"/>
+    </svg>
+  </a>
+
+
+  <a
+    matTooltip="Videos"
+    matTooltipPosition="right"
+    routerLink="/videos"
+    routerLinkActive="active"
+    [routerLinkActiveOptions]="{exact : true}"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+         stroke="currentColor"
+         stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+         class="icon icon-tabler icons-tabler-outline icon-tabler-video">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <path d="M15 10l4.553 -2.276a1 1 0 0 1 1.447 .894v6.764a1 1 0 0 1 -1.447 .894l-4.553 -2.276v-4z"/>
+      <path d="M3 6m0 2a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v8a2 2 0 0 1 -2 2h-8a2 2 0 0 1 -2 -2z"/>
+    </svg>
+  </a>
+
+  <a
+    matTooltip="Pdf"
+    matTooltipPosition="right"
+    routerLink="/pdf"
+    routerLinkActive="active"
+    [routerLinkActiveOptions]="{exact : true}"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+         stroke="currentColor"
+         stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+         class="icon icon-tabler icons-tabler-outline icon-tabler-pdf">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <path d="M10 8v8h2a2 2 0 0 0 2 -2v-4a2 2 0 0 0 -2 -2h-2z"/>
+      <path d="M3 12h2a2 2 0 1 0 0 -4h-2v8"/>
+      <path d="M17 12h3"/>
+      <path d="M21 8h-4v8"/>
+    </svg>
+  </a>
+  <a
+    matTooltip="Txt"
+    matTooltipPosition="right"
+    routerLink="textes"
+    routerLinkActive="active"
+    [routerLinkActiveOptions]="{exact : true}"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+         stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+         class="icon icon-tabler icons-tabler-outline icon-tabler-align-center">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <path d="M4 6l16 0"/>
+      <path d="M8 12l8 0"/>
+      <path d="M6 18l12 0"/>
+    </svg>
+  </a>
+  <a
+    matTooltip="Mp3"
+    matTooltipPosition="right"
+    routerLink="audios"
+    routerLinkActive="active"
+    [routerLinkActiveOptions]="{exact : true}"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+         stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+         class="icon icon-tabler icons-tabler-outline icon-tabler-headphones">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <path d="M4 13m0 2a2 2 0 0 1 2 -2h1a2 2 0 0 1 2 2v3a2 2 0 0 1 -2 2h-1a2 2 0 0 1 -2 -2z"/>
+      <path d="M15 13m0 2a2 2 0 0 1 2 -2h1a2 2 0 0 1 2 2v3a2 2 0 0 1 -2 2h-1a2 2 0 0 1 -2 -2z"/>
+      <path d="M4 15v-3a8 8 0 0 1 16 0v3"/>
+    </svg>
+  </a>
+  <a
+    matTooltip="Other"
+    matTooltipPosition="right"
+    routerLink="other"
+    routerLinkActive="active"
+    [routerLinkActiveOptions]="{exact : true}"
+  >
+    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-notes"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 3m0 2a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v14a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2z" /><path d="M9 7l6 0" /><path d="M9 11l6 0" /><path d="M9 15l4 0" /></svg>
+  </a>
+
+    <a
+      matTooltip="Corbeille"
+      [style.color]="'white'"
+      routerLink="corbeille"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{exact : true}"
+    >
+      <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-archive"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 4m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z" /><path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" /><path d="M10 12l4 0" /></svg>
+    </a>
+</aside>
