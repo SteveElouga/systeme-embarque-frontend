@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {AsyncPipe, NgForOf, NgIf} from "@angular/common";
 import {MatIcon} from "@angular/material/icon";
-import {MatList, MatListItem, MatListItemLine, MatListItemTitle} from "@angular/material/list";
+import {MatList, MatListItem, MatListItemLine, MatListItemAvatar, MatListItemTitle} from "@angular/material/list";
 import {MatProgressSpinner} from "@angular/material/progress-spinner";
 import {NgxPaginationModule} from "ngx-pagination";
 import {animate, animateChild, query, stagger, style, transition, trigger} from "@angular/animations";
@@ -23,7 +23,8 @@ import {Router} from "@angular/router";
     MatProgressSpinner,
     NgForOf,
     NgIf,
-    NgxPaginationModule
+    NgxPaginationModule,
+    MatListItemAvatar
   ],
   templateUrl: './corbeille.component.html',
   styleUrl: './corbeille.component.scss',

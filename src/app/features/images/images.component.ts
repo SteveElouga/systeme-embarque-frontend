@@ -10,7 +10,6 @@ import {MatListModule} from "@angular/material/list";
 import {MatIconModule} from "@angular/material/icon";
 import {MatDividerModule} from "@angular/material/divider";
 import {MatProgressSpinner} from "@angular/material/progress-spinner";
-import {HlmSkeletonComponent} from "@spartan-ng/ui-skeleton-helm";
 import {NgxPaginationModule} from "ngx-pagination";
 import {Router, RouterLink, RouterLinkActive} from "@angular/router";
 import {animate, animateChild, query, stagger, style, transition, trigger} from "@angular/animations";
@@ -27,7 +26,7 @@ import {MatTooltip} from "@angular/material/tooltip";
         MatCardModule,
         MatButtonModule,
         MatListModule,
-        MatIconModule, MatDividerModule, DatePipe, MatProgressSpinner, HlmSkeletonComponent,
+        MatIconModule, MatDividerModule, DatePipe, MatProgressSpinner, 
         NgxPaginationModule, MatTooltip, RouterLink, RouterLinkActive
     ],
   templateUrl: './images.component.html',

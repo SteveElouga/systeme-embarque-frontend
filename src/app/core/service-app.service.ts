@@ -9,7 +9,7 @@ import {Router} from "@angular/router";
 })
 export class ServiceAppService {
 
-  apiUrl = 'http://localhost:5000/api/'
+  apiUrl = 'http://127.0.0.1:5000/api/'
   media = new MediaModel()
 
 
@@ -63,10 +63,10 @@ export class ServiceAppService {
 
   getImages() {
     this.loading$.next(true)
-    this.http.get<{ msg: string, result: MediaModel[] }>(this.apiUrl + "get/images").pipe(
+    this.http.get<{ msg: string, result: MediaModel[] }>(this.apiUrl + "get/images", {headers:{'Cache-Control':'no-cache'}} ).pipe(
       tap((res) => {
         const sortRes = res.result.sort((a, b) => b.created_at.localeCompare(a.created_at))
-        this.imagesSubject$.next(res.result)
+        this.imagesSubject$.next(sortRes)
         this.loading$.next(false)
       })
     ).subscribe()
@@ -77,8 +77,7 @@ export class ServiceAppService {
     this.http.get<{ msg: string, result: MediaModel[] }>(this.apiUrl + "get/videos").pipe(
       tap((res) => {
         const sortRes = res.result.sort((a, b) => b.created_at.localeCompare(a.created_at))
-        this.imagesSubject$.next(res.result)
-        this.videosSubject$.next(res.result)
+        this.videosSubject$.next(sortRes)
         this.loading$.next(false)
       })
     ).subscribe()
@@ -89,8 +88,7 @@ export class ServiceAppService {
     this.http.get<{ msg: string, result: MediaModel[] }>(this.apiUrl + "get/pdf").pipe(
       tap((res) => {
         const sortRes = res.result.sort((a, b) => b.created_at.localeCompare(a.created_at))
-        this.imagesSubject$.next(res.result)
-        this.pdfSubject$.next(res.result)
+        this.pdfSubject$.next(sortRes)
         this.loading$.next(false)
       })
     ).subscribe()
@@ -101,8 +99,7 @@ export class ServiceAppService {
     this.http.get<{ msg: string, result: MediaModel[] }>(this.apiUrl + "get/texts").pipe(
       tap((res) => {
         const sortRes = res.result.sort((a, b) => b.created_at.localeCompare(a.created_at))
-        this.imagesSubject$.next(res.result)
-        this.textesSubject$.next(res.result)
+        this.textesSubject$.next(sortRes)
         this.loading$.next(false)
       })
     ).subscribe()
@@ -113,8 +110,7 @@ export class ServiceAppService {
     this.http.get<{ msg: string, result: MediaModel[] }>(this.apiUrl + "get/audios").pipe(
       tap((res) => {
         const sortRes = res.result.sort((a, b) => b.created_at.localeCompare(a.created_at))
-        this.imagesSubject$.next(res.result)
-        this.audiosSubject$.next(res.result)
+        this.audiosSubject$.next(sortRes)
         this.loading$.next(false)
       })
     ).subscribe()
@@ -125,8 +121,7 @@ export class ServiceAppService {
     this.http.get<{ msg: string, result: MediaModel[] }>(this.apiUrl + "get/other").pipe(
       tap((res) => {
         const sortRes = res.result.sort((a, b) => b.created_at.localeCompare(a.created_at))
-        this.imagesSubject$.next(res.result)
-        this.otherSubject$.next(res.result)
+        this.otherSubject$.next(sortRes)
         this.loading$.next(false)
       })
     ).subscribe()
@@ -209,24 +204,29 @@ export class ServiceAppService {
     this.http.delete(this.apiUrl + `delete/${id}`).pipe(
       tap(() => {
         this.loading$.next(false)
-        switch (type) {
-          case 'image':
-            this.router.navigateByUrl('images')
-            break;
-          case 'video':
-            this.router.navigateByUrl('videos')
-            break;
-          case 'text':
-            this.router.navigateByUrl('textes')
-            break;
-          case 'pdf':
-            this.router.navigateByUrl('pdf')
-            break;
-          case 'else':
-            this.router.navigateByUrl('other')
-            break;
-          default:
-            this.router.navigateByUrl('audios')
+        if (status == 'pending') {
+          this.router.navigateByUrl('corbeille')
+        } 
+        else{
+          switch (type) {
+            case 'image':
+              this.router.navigateByUrl('images')
+              break;
+            case 'video':
+              this.router.navigateByUrl('videos')
+              break;
+            case 'text':
+              this.router.navigateByUrl('textes')
+              break;
+            case 'pdf':
+              this.router.navigateByUrl('pdf')
+              break;
+            case 'else':
+              this.router.navigateByUrl('other')
+              break;
+            default:
+              this.router.navigateByUrl('audios')
+          }
         }
       })
     ).subscribe()

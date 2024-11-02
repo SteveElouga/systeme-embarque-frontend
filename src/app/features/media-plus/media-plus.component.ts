@@ -113,7 +113,7 @@ export class MediaPlusComponent implements OnInit {
     this.mediaService.restaure(id)
   }
 
-  delete(id: number, type: string) {
+  delete(id: number, type: string, status: string) {
     this.mediaService.deleteMedia(id, type)
   }
 }

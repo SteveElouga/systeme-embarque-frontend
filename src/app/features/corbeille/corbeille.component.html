@@ -8,9 +8,14 @@
     currentPage:page}" style="margin: 0 auto;">
       <mat-list-item (click)="onView(media.id)"
                      style="display: flex; justify-content: center; align-items: center; cursor: pointer">
-        <mat-icon matListItemIcon style="margin-right: 20px">
-          description
-        </mat-icon>
+          <mat-icon matListItemAvatar *ngIf="media.type == 'image'; else icon">
+            <img [src]="media.media_url" style="object-fit: cover; width: 100%; height: 100%">
+          </mat-icon>
+          <ng-template #icon>
+            <mat-icon matListItemIcon style="margin-right: 20px">
+              description
+            </mat-icon>
+          </ng-template>
         <div matListItemTitle>{{media.name}}</div>
         <div matListItemLine>{{media.created_at}}</div>
       </mat-list-item>
